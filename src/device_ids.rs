@@ -7,13 +7,11 @@ const BOSE_HID_USAGE_PAGE: u16 = 0xff00;
 // we should at least tweak the wording that currently lists everything with
 // a PID in this list as a "compatible device". Perhaps add an additional
 // match on product string?
-const COMPATIBLE_DEVICES: &[DeviceIds] = &[
-    // Bose Color II SoundLink
-    bose_dev(0x40fe, 0x400d),
-    // Bose SoundLink Mini II
-    bose_dev(0x40fe, 0x4009),
-    // Bose QC35 II
-    bose_dev(0x40fe, 0x4020),
+pub const KNOWN_DEVICES: &[UsbId] = &[
+    bose_pid(0x40fe), // Bose SoundLink Mini II SE (custom patch)
+    bose_pid(0x1020),
+    bose_pid(0x1021),
+    bose_pid(0x1022),
 ];
 
 // Use UsbId instead of DeviceIds since some incompatible devices don't have a concept of DFU mode.
